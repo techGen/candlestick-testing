@@ -44,11 +44,11 @@ public class CandlestickAPITest {
                 TimeUnit.MINUTES, 1);
 
         //Calling trades api
-        GetTrades trades = new GetTrades(Environment.PROD, "BTC_USDT");
-        Assertions.assertEquals(200, trades.getStatusCode());
+        GetTrades tradesAPI = new GetTrades(Environment.PROD, "BTC_USDT");
+        Assertions.assertEquals(200, tradesAPI.getStatusCode());
 
         //Getting all trades within same time period of above candle stick and finding o,c,h,l  price
-        Map<String, BigDecimal> tradesPrice = trades.getTradesInfo(candleStickTime.get(Constants.CandleStick.START_TIME),
+        Map<String, BigDecimal> tradesPrice = tradesAPI.getTradesInfo(candleStickTime.get(Constants.CandleStick.START_TIME),
                 candleStickTime.get(Constants.CandleStick.END_TIME));
 
         //o,c,h,l price validation between candle and trade data
@@ -73,12 +73,12 @@ public class CandlestickAPITest {
         Map<String, Date> candleStickTime_2 = candleStickAPI.getCandleStickTime(candleStickAPI.getCandleStick(2).get(1),
                 TimeUnit.MINUTES, 5);
 
-        GetTrades trades = new GetTrades(Environment.PROD, "BTC_USDT");
-        Assertions.assertEquals(200, trades.getStatusCode());
+        GetTrades tradesAPI = new GetTrades(Environment.PROD, "BTC_USDT");
+        Assertions.assertEquals(200, tradesAPI.getStatusCode());
 
-        Map<String, BigDecimal> tradesPrice_1 = trades.getTradesInfo(candleStickTime_1.get(Constants.CandleStick.START_TIME),
+        Map<String, BigDecimal> tradesPrice_1 = tradesAPI.getTradesInfo(candleStickTime_1.get(Constants.CandleStick.START_TIME),
                 candleStickTime_1.get(Constants.CandleStick.END_TIME));
-        Map<String, BigDecimal> tradesPrice_2 = trades.getTradesInfo(candleStickTime_2.get(Constants.CandleStick.START_TIME),
+        Map<String, BigDecimal> tradesPrice_2 = tradesAPI.getTradesInfo(candleStickTime_2.get(Constants.CandleStick.START_TIME),
                 candleStickTime_2.get(Constants.CandleStick.END_TIME));
 
         softAssertions.assertThat(candleStickPrice_1.get(Constants.Price.HIGHEST_PRICE)).isEqualTo(tradesPrice_1.get(Constants.Price.HIGHEST_PRICE));
@@ -105,10 +105,10 @@ public class CandlestickAPITest {
         Map<String, Date> candleStickTime = candleStickAPI.getCandleStickTime(candleStickAPI.getCandleStick(1).get(0),
                 TimeUnit.HOURS, 1);
 
-        GetTrades trades = new GetTrades(Environment.PROD, "ETH_BTC");
-        Assertions.assertEquals(200, trades.getStatusCode());
+        GetTrades tradesAPI = new GetTrades(Environment.PROD, "ETH_BTC");
+        Assertions.assertEquals(200, tradesAPI.getStatusCode());
 
-        Map<String, BigDecimal> tradesPrice = trades.getTradesInfo(candleStickTime.get(Constants.CandleStick.START_TIME),
+        Map<String, BigDecimal> tradesPrice = tradesAPI.getTradesInfo(candleStickTime.get(Constants.CandleStick.START_TIME),
                 candleStickTime.get(Constants.CandleStick.END_TIME));
 
         softAssertions.assertThat(candleStickPrice.get(Constants.Price.HIGHEST_PRICE)).isEqualTo(tradesPrice.get(Constants.Price.HIGHEST_PRICE));
