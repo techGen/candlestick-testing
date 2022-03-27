@@ -8,15 +8,14 @@ CRYPTO.COM CANDLESTICK API TESTING
 
 **How to Run Test**
 
-1) Download or clone from below repository
+1) Download from below repository
    ```
-   git@github.com:techGen/candlestick-testing.git
+   https://github.com/techGen/candlestick-testing
    ```
 2) Go to the root project folder
 
 3) Run below commands
 ```
-mvn clean install 
 mvn -Dmaven.test.failure.ignore=true clean test site
 ```
 
@@ -24,9 +23,9 @@ mvn -Dmaven.test.failure.ignore=true clean test site
 
 After you executed the above maven commands then test report will be generated under the root project inside **target** folder
 ```
-<your-local-path>/candlestick-verification/target/site/index.html
+<your-local-path>/<root-project>/target/site/index.html
 ```
 Logs file will be added on below location
 ```
-<your-local-path>/candlestick-verification/target/logs/testing.log
+<your-local-path>/<root-project>/target/logs/testing.log
 ```
