@@ -14,7 +14,7 @@ CRYPTO.COM CANDLESTICK API TESTING
    ```
 2) Go to the root project folder
 
-3) Run below commands
+3) Run below command
 ```
 mvn -Dmaven.test.failure.ignore=true clean test site
 ```
